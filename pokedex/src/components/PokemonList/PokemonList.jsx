@@ -29,7 +29,7 @@ const PokemonList = () => {
         const pokeListResult = pokemonData.map((pokeData) => {
             const pokemon = pokeData.data;
             return {
-                id : pokemon.id,
+                id: pokemon.id,
                 name: pokemon.name,
                 image: (pokemon.sprites.other) ? pokemon.sprites.other.dream_world.front_default : pokemon.sprites.other.front_shiny,
                 types: pokemon.types
@@ -46,10 +46,15 @@ const PokemonList = () => {
 
     return (
         <div className="pokemon-list-wrapper">
-            <div>Pokemon List</div>
-            {(isLoading) ? 'Loading...' : 
-                pokemonList.map((p) => <Pokemon name={p.name} image={p.image} key={p.id}/>)
-            }
+            <div className="pokemon-wraper">
+                {(isLoading) ? 'Loading...' :
+                    pokemonList.map((p) => <Pokemon name={p.name} image={p.image} key={p.id} />)
+                }
+            </div>
+            <div className="controls">
+                <button>Prev</button>
+                <button>Next</button>
+            </div>
         </div>
     )
 }
